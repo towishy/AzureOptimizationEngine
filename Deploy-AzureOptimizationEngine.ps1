@@ -134,7 +134,7 @@ if (Test-Path -Path $lastDeploymentStatePath)
     }
 }
 
-$GitHubOriginalUri = "https://raw.githubusercontent.com/helderpinto/AzureOptimizationEngine/master/azuredeploy.json"
+$GitHubOriginalUri = "https://raw.githubusercontent.com/towishy/AzureOptimizationEngine/master/azuredeploy.json"
 
 if ([string]::IsNullOrEmpty($TemplateUri)) {
     $TemplateUri = $GitHubOriginalUri
@@ -185,7 +185,7 @@ else {
 
 Write-Host "Getting Azure subscriptions..." -ForegroundColor Green
 
-$subscriptions = Get-AzSubscription | Where-Object { $_.State -eq "Enabled" -and $_.SubscriptionPolicies.QuotaId -notlike "Internal*" -and $_.SubscriptionPolicies.QuotaId -notlike "AAD*" }
+$subscriptions = Get-AzSubscription | Where-Object { $_.State -eq "Enabled" }
 
 if ($subscriptions.Count -gt 1) {
 
